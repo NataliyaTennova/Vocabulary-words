@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Диктант с пропусками — Версия 22 (словарь 1–3, 22–29)</title>
+<title>Диктант с пропусками — Версия 22 (5–6 класс, словари 1–3, 22–29)</title>
 <style>
 :root{
   --bg1:#0ea5e9;
@@ -66,7 +66,31 @@ main{padding:16px}
   box-shadow:0 8px 16px rgba(139,92,246,.35)
 }
 .btn.ghost{background:#f1f5f9}
-.section-title{font-size:18px;margin:0 0 10px 0}
+
+.section-title{
+  font-size:18px;
+  margin:0 0 10px 0;
+  font-weight:800;
+  text-align:center;
+}
+
+/* заголовки блоков классов */
+.grade-title{
+  font-size:26px;
+  font-weight:900;
+  text-align:center;
+  margin:18px 0 12px;
+  letter-spacing:0.5px;
+}
+
+/* разделитель между 5 и 6 классом */
+.divider{
+  margin:26px -8px 26px;
+  height:4px;
+  background:linear-gradient(90deg,#d1d5db,#9ca3af,#d1d5db);
+  border-radius:999px;
+}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -204,76 +228,111 @@ select{
 <div class="app">
   <header>
     <h1>Диктант с пропусками — мультивыбор словарей</h1>
-    <p>Версия 22: словари 1–3 и 22–29, ограничение числа слов, счётчик трудных слов, «Повторить» и «Завершить попытку».</p>
+    <p>Версия 22: словари 1–3 и 22–29, разделение 5/6 класс, лимит слов, повторы, «Повторить» и «Завершить попытку».</p>
   </header>
   <main>
     <!-- СТАРТОВЫЙ ЭКРАН -->
     <div class="card" id="startCard">
       <h2 class="section-title">Выбери словари</h2>
-      <div class="row" style="margin-bottom:10px">
+
+      <!-- ГЛОБАЛЬНЫЕ КНОПКИ -->
+      <div class="row" style="justify-content:center;margin-bottom:18px">
         <button class="btn ghost" id="selectAll">Все ✓</button>
         <button class="btn ghost" id="clearAll">Убрать все ✕</button>
       </div>
+
+      <!-- БЛОК 5 КЛАСС -->
+      <div class="grade-title">5 класс</div>
+
+      <div class="row" style="justify-content:center;margin-bottom:10px">
+        <button class="btn ghost" id="selectAll5">Все (5 кл) ✓</button>
+        <button class="btn ghost" id="clearAll5">Убрать (5 кл) ✕</button>
+      </div>
+
       <div class="grid">
         <div class="opt">
-          <h3>📒 Словарь 1 <span class="muted">(27 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="1" checked> Включить</label>
-          <p class="muted">инъекция, адъютант, объективно, субъективно, объект, субъект…</p>
+          <h3>📒 Словарь 1 (5 кл) <span class="muted">(27 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict5" value="1" checked> Включить</label>
+          <p class="muted">инъекция, адъютант, объективно…</p>
         </div>
+
         <div class="opt">
-          <h3>📕 Словарь 2 <span class="muted">(37 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="2" checked> Включить</label>
-          <p class="muted">здешний, здоровье, бутсы, зигзаг, притча, ветчина…</p>
+          <h3>📕 Словарь 2 (5 кл) <span class="muted">(37 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict5" value="2" checked> Включить</label>
+          <p class="muted">здешний, здоровье, зигзаг…</p>
         </div>
+
         <div class="opt">
-          <h3>📙 Словарь 3 <span class="muted">(21 слово)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="3" checked> Включить</label>
-          <p class="muted">удастся, нянчить, словесный, телесный, фальшь, жюри…</p>
+          <h3>📙 Словарь 3 (5 кл) <span class="muted">(21 слово)</span></h3>
+          <label><input type="checkbox" class="dictbox dict5" value="3" checked> Включить</label>
+          <p class="muted">удастся, нянчить, словесный…</p>
         </div>
+
+        <!-- Здесь позже будут словари 4–21 (5 кл) -->
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- БЛОК 6 КЛАСС -->
+      <div class="grade-title">6 класс</div>
+
+      <div class="row" style="justify-content:center;margin-bottom:10px">
+        <button class="btn ghost" id="selectAll6">Все (6 кл) ✓</button>
+        <button class="btn ghost" id="clearAll6">Убрать (6 кл) ✕</button>
+      </div>
+
+      <div class="grid">
         <div class="opt">
-          <h3>📗 Словарь 22 <span class="muted">(16 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="22" checked> Включить</label>
-          <p class="muted">вообще, в общем, все-таки, трущобы, трещотка…</p>
+          <h3>📗 Словарь 1 (6 кл) <span class="muted">(16 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="22" checked> Включить</label>
+          <p class="muted">вообще, в общем, всё-таки…</p>
         </div>
+
         <div class="opt">
-          <h3>📘 Словарь 23 <span class="muted">(16 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="23" checked> Включить</label>
-          <p class="muted">пазори, побирушка, аллергия, алюминий, архаичный…</p>
+          <h3>📘 Словарь 2 (6 кл) <span class="muted">(16 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="23" checked> Включить</label>
+          <p class="muted">пазори, побирушка, аллергия…</p>
         </div>
+
         <div class="opt">
-          <h3>📘 Словарь 24 <span class="muted">(12 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="24" checked> Включить</label>
-          <p class="muted">бахрома, берет, ботфорты, гостиная, гостиница, гипербола…</p>
+          <h3>📘 Словарь 3 (6 кл) <span class="muted">(12 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="24" checked> Включить</label>
+          <p class="muted">бахрома, ботфорты, гипербола…</p>
         </div>
+
         <div class="opt">
-          <h3>📗 Словарь 25 <span class="muted">(19 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="25" checked> Включить</label>
-          <p class="muted">алюминиевый, как будто, чтобы, вроде бы, в-третьих, килограмм…</p>
+          <h3>📗 Словарь 4 (6 кл) <span class="muted">(19 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="25" checked> Включить</label>
+          <p class="muted">алюминиевый, как будто…</p>
         </div>
+
         <div class="opt">
-          <h3>📙 Словарь 26 <span class="muted">(21 слово)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="26" checked> Включить</label>
-          <p class="muted">йога, йогурт, запестреть, картуз, ироничный, исследование…</p>
+          <h3>📙 Словарь 5 (6 кл) <span class="muted">(21 слово)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="26" checked> Включить</label>
+          <p class="muted">йога, запестреть, картуз…</p>
         </div>
+
         <div class="opt">
-          <h3>📕 Словарь 27 <span class="muted">(14 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="27" checked> Включить</label>
-          <p class="muted">ассигнация, багровый, бирюзовый, блеснуть, плеснуть…</p>
+          <h3>📕 Словарь 6 (6 кл) <span class="muted">(14 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="27" checked> Включить</label>
+          <p class="muted">ассигнация, багровый…</p>
         </div>
+
         <div class="opt">
-          <h3>📔 Словарь 28 <span class="muted">(18 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="28" checked> Включить</label>
-          <p class="muted">въявь, бокал, каблук, абориген, кавычки, чемпион…</p>
+          <h3>📔 Словарь 7 (6 кл) <span class="muted">(18 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="28" checked> Включить</label>
+          <p class="muted">въявь, бокал, каблук…</p>
         </div>
+
         <div class="opt">
-          <h3>📓 Словарь 29 <span class="muted">(19 слов)</span></h3>
-          <label><input type="checkbox" class="dictbox" value="29" checked> Включить</label>
-          <p class="muted">можжевельник, вожжи, дрожжи, жужжать, жжёный, ссора…</p>
+          <h3>📓 Словарь 8 (6 кл) <span class="muted">(19 слов)</span></h3>
+          <label><input type="checkbox" class="dictbox dict6" value="29" checked> Включить</label>
+          <p class="muted">можжевельник, вожжи, дрожжи…</p>
         </div>
       </div>
 
-      <h2 class="section-title" style="margin-top:16px">Повторы и длина попытки</h2>
-      <div class="row" style="margin-bottom:8px">
+      <h2 class="section-title" style="margin-top:20px">Повторы и длина попытки</h2>
+      <div class="row" style="margin-bottom:8px;justify-content:center">
         <div class="toggle">
           <span>Сколько раз повторять сложные слова?</span>
           <select id="repeatCount">
@@ -284,7 +343,7 @@ select{
           </select>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="justify-content:center">
         <div class="toggle">
           <span>Сколько слов за попытку?</span>
           <input id="limitInput" type="number" min="1" placeholder="">
@@ -292,7 +351,7 @@ select{
         </div>
         <button class="btn accent" id="startBtn">Начать тренировку</button>
       </div>
-      <p class="muted" id="startMsg" style="margin-top:8px"></p>
+      <p class="muted" id="startMsg" style="margin-top:8px;text-align:center"></p>
     </div>
 
     <!-- ИГРОВОЙ ЭКРАН -->
@@ -735,6 +794,15 @@ const startCard=document.getElementById('startCard'),
   limitInput=document.getElementById('limitInput'),
   limitInfo=document.getElementById('limitInfo');
 
+// Кнопки по классам
+const all5  = document.getElementById('selectAll5');
+const none5 = document.getElementById('clearAll5');
+const dict5 = Array.from(document.querySelectorAll('.dict5'));
+
+const all6  = document.getElementById('selectAll6');
+const none6 = document.getElementById('clearAll6');
+const dict6 = Array.from(document.querySelectorAll('.dict6'));
+
 let SELECTED=[1,2,3,22,23,24,25,26,27,28,29];
 
 // === Подсчёт максимального числа слов ===
@@ -813,6 +881,14 @@ function markWrong(cur){
 // === Запуск игры ===
 selectAllBtn.addEventListener('click',()=>{boxes.forEach(b=>b.checked=true);updateLimitInfo();});
 clearAllBtn.addEventListener('click',()=>{boxes.forEach(b=>b.checked=false);updateLimitInfo();});
+
+// Кнопки 5 класса
+all5.addEventListener('click', ()=>{dict5.forEach(b=>b.checked=true);updateLimitInfo();});
+none5.addEventListener('click', ()=>{dict5.forEach(b=>b.checked=false);updateLimitInfo();});
+
+// Кнопки 6 класса
+all6.addEventListener('click', ()=>{dict6.forEach(b=>b.checked=true);updateLimitInfo();});
+none6.addEventListener('click', ()=>{dict6.forEach(b=>b.checked=false);updateLimitInfo();});
 
 startBtn.addEventListener('click',()=>{
   SELECTED=boxes.filter(b=>b.checked).map(b=>Number(b.value));
